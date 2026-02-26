@@ -30,9 +30,9 @@ const PrioritiesSection = () => (
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {priorities.map((p, i) => (
           <ScrollReveal key={p.title} delay={i * 0.08}>
-            <div className="group glass-subtle rounded-xl p-6 hover:border-glow hover:glow-amber transition-all duration-500 h-full">
-              <div className="w-10 h-10 rounded-lg gradient-gold flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                <p.icon size={18} className="text-primary-foreground" />
+            <div className="group bg-card rounded-xl p-6 border border-border hover:border-glow hover:glow-amber transition-all duration-500 h-full shadow-sm">
+              <div className="w-10 h-10 rounded-lg gradient-blue flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                <p.icon size={18} className="text-secondary-foreground" />
               </div>
               <h3 className="font-display text-lg font-semibold mb-2">{p.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>

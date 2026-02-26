@@ -18,11 +18,11 @@ const ContactSection = () => {
       <div className="section-divider mb-24" />
       <div className="container">
         <ScrollReveal>
-          <div className="glass rounded-xl p-8 lg:p-12 glow-amber">
+          <div className="bg-card rounded-xl p-8 lg:p-12 glow-blue border border-border shadow-sm">
             <div className="text-center mb-10">
-              <span className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-4 block">Get in Touch</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-secondary font-medium mb-4 block">Get in Touch</span>
               <h2 className="font-display text-3xl sm:text-4xl font-bold mb-3">
-                Let's <span className="gradient-gold-text">Connect</span>
+                Let's <span className="gradient-blue-text">Connect</span>
               </h2>
               <p className="text-muted-foreground max-w-md mx-auto">
                 Policy ideas, endorsement requests, media inquiries, or volunteer coordination — we'd love to hear from you.
@@ -30,12 +30,12 @@ const ContactSection = () => {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-8">
-              <div className="glass-subtle rounded-xl p-6">
+              <div className="bg-muted/50 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Mail size={18} className="text-primary" />
+                  <Mail size={18} className="text-secondary" />
                   <h3 className="font-display text-lg font-semibold">Reach Out</h3>
                 </div>
-                <a href="mailto:info@yourdomain.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/20 text-sm text-primary hover:bg-primary/5 transition-colors mb-6">
+                <a href="mailto:info@yourdomain.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors mb-6">
                   info@yourdomain.com
                 </a>
                 <p className="text-muted-foreground text-xs mb-3 uppercase tracking-wider">Social</p>
@@ -49,9 +49,9 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              <div className="glass-subtle rounded-xl p-6">
+              <div className="bg-muted/50 rounded-xl p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Send size={18} className="text-primary" />
+                  <Send size={18} className="text-secondary" />
                   <h3 className="font-display text-lg font-semibold">Send a Message</h3>
                 </div>
                 <form onSubmit={handleContact} className="space-y-3">

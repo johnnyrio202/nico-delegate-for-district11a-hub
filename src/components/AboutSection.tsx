@@ -61,7 +61,7 @@ const AboutSection = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <div className="glass rounded-xl p-8 glow-amber" id="updates">
+            <div className="bg-card rounded-xl p-8 glow-amber border border-border shadow-sm" id="updates">
               <span className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-4 block">Stay Connected</span>
               <h3 className="font-display text-2xl font-bold mb-2">Campaign Updates</h3>
               <p className="text-muted-foreground text-sm mb-6">Sign up for emails about events, priorities, and ways to help.</p>

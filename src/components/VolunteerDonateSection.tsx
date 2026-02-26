@@ -19,7 +19,7 @@ const VolunteerDonateSection = () => {
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-8">
           <ScrollReveal>
-            <div className="glass rounded-xl p-8 h-full">
+            <div className="bg-card rounded-xl p-8 h-full border border-border shadow-sm">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg gradient-gold flex items-center justify-center">
                   <Users size={18} className="text-primary-foreground" />
@@ -64,10 +64,10 @@ const VolunteerDonateSection = () => {
           </ScrollReveal>
 
           <ScrollReveal delay={0.15}>
-            <div className="glass rounded-xl p-8 h-full" id="donate">
+            <div className="bg-card rounded-xl p-8 h-full border border-border shadow-sm" id="donate">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg gradient-gold flex items-center justify-center">
-                  <Heart size={18} className="text-primary-foreground" />
+                 <div className="w-10 h-10 rounded-lg gradient-blue flex items-center justify-center">
+                   <Heart size={18} className="text-secondary-foreground" />
                 </div>
                 <div>
                   <h2 className="font-display text-2xl font-bold">Donate</h2>
@@ -79,7 +79,7 @@ const VolunteerDonateSection = () => {
               </p>
 
               <div className="space-y-4">
-                <div className="glass-subtle rounded-xl p-6 border-glow">
+                <div className="bg-muted/50 rounded-xl p-6 border-glow">
                   <h3 className="font-display text-lg font-semibold mb-2">Make a Contribution</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                     Every dollar helps us reach more voters across District 11A.
@@ -97,7 +97,7 @@ const VolunteerDonateSection = () => {
                   </p>
                 </div>
 
-                <div className="glass-subtle rounded-xl p-6">
+                <div className="bg-muted/50 rounded-xl p-6">
                   <h3 className="font-display text-lg font-semibold mb-2">Host a Meet &amp; Greet</h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-3">
                     Want to host a small gathering in District 11A? We'll coordinate everything.

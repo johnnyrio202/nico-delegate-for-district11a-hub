@@ -8,7 +8,7 @@ const HeroSection = () => (
     {/* Background effects */}
     <div className="absolute inset-0 hero-gradient" />
     <div className="absolute top-20 right-0 w-[500px] h-[500px] rounded-full bg-primary/5 blur-[120px]" />
-    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary/3 blur-[100px]" />
+    <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-secondary/5 blur-[100px]" />
 
     <div className="container relative z-10 py-20 lg:py-0">
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -56,7 +56,7 @@ const HeroSection = () => (
             <a href="#volunteer" className="px-6 py-3 rounded-md font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity flex items-center gap-2 text-sm">
               Join the Campaign <ArrowRight size={16} />
             </a>
-            <a href="#priorities" className="px-6 py-3 rounded-md font-medium border border-border text-foreground hover:bg-secondary/50 transition-colors text-sm">
+            <a href="#priorities" className="px-6 py-3 rounded-md font-medium gradient-blue text-secondary-foreground hover:opacity-90 transition-opacity text-sm">
               See Priorities
             </a>
           </motion.div>
@@ -111,12 +111,12 @@ const HeroSection = () => (
             <span className="text-xs text-primary font-medium uppercase tracking-wider">Data Informed</span>
           </motion.div>
           <motion.div
-            className="absolute -right-4 bottom-24 glass-subtle rounded-lg px-4 py-2.5 border-glow"
+            className="absolute -right-4 bottom-24 glass-subtle rounded-lg px-4 py-2.5 border-glow-blue"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            <span className="text-xs text-primary font-medium uppercase tracking-wider">Results Driven</span>
+            <span className="text-xs text-secondary font-medium uppercase tracking-wider">Results Driven</span>
           </motion.div>
         </motion.div>
       </div>
