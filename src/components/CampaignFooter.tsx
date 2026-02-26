@@ -1,7 +1,7 @@
 import { ArrowUp } from "lucide-react";
 
 const CampaignFooter = () => (
-  <footer className="border-t border-border/50 py-12 mt-8 relative">
+  <footer className="border-t border-border bg-card py-12 mt-8 relative">
     <div className="section-divider absolute top-0 left-0 right-0" />
     <div className="container">
       <div className="flex flex-col md:flex-row gap-8 items-start justify-between">
