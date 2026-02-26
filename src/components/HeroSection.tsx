@@ -101,22 +101,34 @@ const HeroSection = () => (
             </div>
           </div>
 
-          {/* Floating badges */}
+          {/* Trait badges below image */}
           <motion.div
-            className="absolute -left-4 top-8 glass-subtle rounded-lg px-4 py-2.5 border-glow"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
+            className="grid grid-cols-2 gap-3 mt-4"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
           >
-            <span className="text-xs text-primary font-medium uppercase tracking-wider">Data Informed</span>
-          </motion.div>
-          <motion.div
-            className="absolute -right-4 bottom-24 glass-subtle rounded-lg px-4 py-2.5 border-glow-blue"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 1.1, duration: 0.6 }}
-          >
-            <span className="text-xs text-secondary font-medium uppercase tracking-wider">Results Driven</span>
+            {[
+              { label: "Data Informed", variant: "amber" },
+              { label: "Community Centered", variant: "blue" },
+              { label: "Results Driven", variant: "blue" },
+              { label: "Coalition Builder", variant: "amber" },
+            ].map((badge) => (
+              <div
+                key={badge.label}
+                className={`rounded-lg px-4 py-2.5 text-center ${
+                  badge.variant === "amber"
+                    ? "border-glow glass-subtle"
+                    : "border-glow-blue glass-subtle"
+                }`}
+              >
+                <span className={`text-xs font-medium uppercase tracking-wider ${
+                  badge.variant === "amber" ? "text-primary" : "text-secondary"
+                }`}>
+                  {badge.label}
+                </span>
+              </div>
+            ))}
           </motion.div>
         </motion.div>
       </div>
