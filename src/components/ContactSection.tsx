@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { toast } from "sonner";
+import { Mail, Send } from "lucide-react";
+import ScrollReveal from "./ScrollReveal";
 
 const ContactSection = () => {
   const [sent, setSent] = useState(false);
@@ -12,59 +14,77 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-5">
+    <section id="contact" className="py-24 relative">
+      <div className="section-divider mb-24" />
       <div className="container">
-        <div className="glass-card rounded-lg p-6">
-          <h2 className="text-xl font-bold mb-2">Contact</h2>
-          <p className="text-muted-foreground text-sm mb-4">
-            Reach out for policy ideas, endorsement requests, media inquiries, or volunteer coordination.
-          </p>
+        <ScrollReveal>
+          <div className="glass rounded-xl p-8 lg:p-12 glow-amber">
+            <div className="text-center mb-10">
+              <span className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-4 block">Get in Touch</span>
+              <h2 className="font-display text-3xl sm:text-4xl font-bold mb-3">
+                Let's <span className="gradient-gold-text">Connect</span>
+              </h2>
+              <p className="text-muted-foreground max-w-md mx-auto">
+                Policy ideas, endorsement requests, media inquiries, or volunteer coordination — we'd love to hear from you.
+              </p>
+            </div>
 
-          <div className="grid lg:grid-cols-2 gap-4">
-            <div className="rounded-lg border border-border p-4">
-              <h3 className="text-sm font-semibold mb-2">Email</h3>
-              <a href="mailto:info@yourdomain.com" className="inline-block px-3 py-1.5 rounded-full text-sm text-muted-foreground border border-border hover:text-foreground transition-colors">
-                info@yourdomain.com
-              </a>
-              <p className="text-muted-foreground text-xs mt-4 mb-2">Social links:</p>
-              <div className="flex flex-wrap gap-2">
-                {["Facebook", "Instagram", "X", "YouTube"].map((s) => (
-                  <a key={s} href="https://example.com" rel="noopener"
-                    className="text-xs text-muted-foreground border border-border rounded-full px-2.5 py-1.5 hover:text-foreground transition-colors">
-                    {s}
-                  </a>
-                ))}
+            <div className="grid lg:grid-cols-2 gap-8">
+              <div className="glass-subtle rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Mail size={18} className="text-primary" />
+                  <h3 className="font-display text-lg font-semibold">Reach Out</h3>
+                </div>
+                <a href="mailto:info@yourdomain.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-primary/20 text-sm text-primary hover:bg-primary/5 transition-colors mb-6">
+                  info@yourdomain.com
+                </a>
+                <p className="text-muted-foreground text-xs mb-3 uppercase tracking-wider">Social</p>
+                <div className="flex flex-wrap gap-2">
+                  {["Facebook", "Instagram", "X", "YouTube"].map((s) => (
+                    <a key={s} href="https://example.com" rel="noopener"
+                      className="text-xs text-muted-foreground border border-border rounded-md px-3 py-2 hover:text-foreground hover:border-primary/20 transition-all">
+                      {s}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+              <div className="glass-subtle rounded-xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <Send size={18} className="text-primary" />
+                  <h3 className="font-display text-lg font-semibold">Send a Message</h3>
+                </div>
+                <form onSubmit={handleContact} className="space-y-3">
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    <div>
+                      <label htmlFor="cName" className="text-xs text-muted-foreground uppercase tracking-wider">Name</label>
+                      <input id="cName" name="name" autoComplete="name" required
+                        className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                    </div>
+                    <div>
+                      <label htmlFor="cEmail" className="text-xs text-muted-foreground uppercase tracking-wider">Email</label>
+                      <input id="cEmail" name="email" type="email" autoComplete="email" required
+                        className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                    </div>
+                  </div>
+                  <div>
+                    <label htmlFor="cMsg" className="text-xs text-muted-foreground uppercase tracking-wider">Message</label>
+                    <textarea id="cMsg" name="message" required rows={4}
+                      className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                  </div>
+                  <button type="submit" className="w-full py-3 rounded-lg text-sm font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity">
+                    Send Message
+                  </button>
+                  {sent && <p className="text-xs text-primary">✓ Thank you! We'll respond soon.</p>}
+                </form>
               </div>
             </div>
 
-            <div className="rounded-lg border border-border p-4">
-              <h3 className="text-sm font-semibold mb-2">Send a message</h3>
-              <form onSubmit={handleContact} className="space-y-3">
-                <div>
-                  <label htmlFor="cName" className="text-xs text-muted-foreground">Name</label>
-                  <input id="cName" name="name" autoComplete="name" required
-                    className="w-full mt-1 px-3 py-2.5 rounded-lg border border-border bg-background/40 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-                </div>
-                <div>
-                  <label htmlFor="cEmail" className="text-xs text-muted-foreground">Email</label>
-                  <input id="cEmail" name="email" type="email" autoComplete="email" required
-                    className="w-full mt-1 px-3 py-2.5 rounded-lg border border-border bg-background/40 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-ring" />
-                </div>
-                <div>
-                  <label htmlFor="cMsg" className="text-xs text-muted-foreground">Message</label>
-                  <textarea id="cMsg" name="message" required rows={4}
-                    className="w-full mt-1 px-3 py-2.5 rounded-lg border border-border bg-background/40 text-foreground text-sm resize-y focus:outline-none focus:ring-2 focus:ring-ring" />
-                </div>
-                <button type="submit" className="w-full py-2.5 rounded-lg text-sm font-bold gradient-cta transition-all">Send</button>
-                {sent && <p className="text-xs text-muted-foreground">Thank you! We'll get back to you.</p>}
-              </form>
-            </div>
+            <p className="text-[11px] text-muted-foreground text-center mt-8">
+              Need content in another format? Email the campaign and we will accommodate.
+            </p>
           </div>
-
-          <p className="text-xs text-muted-foreground mt-4">
-            Accessibility note: If you need content in another format, email the campaign and we will accommodate.
-          </p>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
