@@ -35,9 +35,14 @@ const ContactSection = () => {
                   <Mail size={18} className="text-secondary" />
                   <h3 className="font-display text-lg font-semibold">Reach Out</h3>
                 </div>
-                <a href="mailto:info@yourdomain.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors mb-6">
-                  info@yourdomain.com
-                </a>
+                <div className="flex flex-col gap-2 mb-6">
+                  <a href="mailto:info@yourdomain.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
+                    info@yourdomain.com
+                  </a>
+                  <a href="tel:+10000000000" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
+                    (000) 000-0000
+                  </a>
+                </div>
                 <p className="text-muted-foreground text-xs mb-3 uppercase tracking-wider">Social</p>
                 <div className="flex flex-wrap gap-2">
                   {["Facebook", "Instagram", "X", "YouTube"].map((s) => (
