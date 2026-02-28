@@ -38,9 +38,9 @@ Campaign material for Nico Sanders for Delegate, District 11A.<strong className=
         </div>
       </div>
 
-      <p className="text-[11px] text-muted-foreground mt-8 text-center">
-        Replace bracketed fields after campaign finance entity registration is complete.
-      </p>
+      
+
+
     </div>
   </footer>;
 
