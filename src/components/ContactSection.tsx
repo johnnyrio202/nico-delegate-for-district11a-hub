@@ -36,11 +36,11 @@ const ContactSection = () => {
                   <h3 className="font-display text-lg font-semibold">Reach Out</h3>
                 </div>
                 <div className="flex flex-col gap-2 mb-6">
-                  <a href="mailto:info@yourdomain.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
-                    info@yourdomain.com
+                  <a href="mailto:info@nicofordelegate.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
+                    info@nicofordelegate.com
                   </a>
-                  <a href="tel:+10000000000" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
-                    (000) 000-0000
+                  <a href="tel:+14108035821" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
+                    (410) 803-5821
                   </a>
                 </div>
                 <p className="text-muted-foreground text-xs mb-3 uppercase tracking-wider">Social</p>
