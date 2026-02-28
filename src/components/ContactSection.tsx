@@ -36,8 +36,8 @@ const ContactSection = () => {
                   <h3 className="font-display text-lg font-semibold">Reach Out</h3>
                 </div>
                 <div className="flex flex-col gap-2 mb-6">
-                  <a href="mailto:info@nicofordelegate.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
-                    info@nicofordelegate.com
+                  <a href="mailto:info@nicoformddelegate.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
+                    info@nicoformddelegate.com
                   </a>
                   <a href="tel:+14108035821" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
                     (410) 803-5821
