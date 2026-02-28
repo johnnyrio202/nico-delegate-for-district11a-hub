@@ -12,7 +12,12 @@ const CampaignFooter = () =>
             </div>
             <span className="font-display font-semibold">Nico Sanders</span>
           </div>
-          <p className="text-xs text-muted-foreground leading-relaxed">Authority line placeholder. Paid for by Friends of Nico Sanders, [Treasurer Name], Treasurer, 1060 [need PO box or street] Owings Mills, MD 21117. Campaign material for Nico Sanders for Delegate, District 11A.</p>
+          <p className="text-xs text-muted-foreground leading-relaxed">Authority line placeholder
+Paid for by Friends of Nico Sanders, [Treasurer Name], Treasurer, 1060 [need PO box or street] Owings Mills, MD 21117.
+Campaign material for Nico Sanders for Delegate, District 11A.<strong className="text-foreground/80">Authority line placeholder</strong><br />
+            Paid for by Friends of Nico Sanders, [Treasurer Name], Treasurer, [Committee Address].<br />
+            Campaign material for Nico Sanders for Delegate, District 11A.
+          </p>
         </div>
 
         <div className="flex flex-col items-start md:items-end gap-3">
