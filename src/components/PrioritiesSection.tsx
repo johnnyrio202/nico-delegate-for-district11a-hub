@@ -2,7 +2,7 @@ import { Home, Heart, GraduationCap, Landmark, Briefcase, TreePine } from "lucid
 import ScrollReveal from "./ScrollReveal";
 
 const priorities = [
-  { icon: Home, title: "Housing & Cost of Living", desc: "Expand affordable housing, protect renters and homeowners from displacement, and support workforce housing near jobs." },
+  { icon: Home, title: "Housing & Cost of Living", desc: "Expand affordable housing, protect renters and homeowners from displacement, reduce energy bills and support workforce housing near jobs." },
   { icon: Heart, title: "Mental Health & Safety", desc: "Increase treatment access, strengthen crisis response, and invest in violence prevention strategies." },
   { icon: GraduationCap, title: "Schools & Opportunity", desc: "Back educators, improve supports, and expand career-connected learning and apprenticeships." },
   { icon: Landmark, title: "Good Government", desc: "Cut delays, improve constituent service, and make state resources easier to access." },
