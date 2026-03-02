@@ -1,10 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { toast } from "sonner";
 import nicoDailyRecord from "@/assets/nico-daily-record.jpeg";
+import nicoFamily from "@/assets/nico-family.jpeg";
+import nicoCommunity from "@/assets/nico-community.jpeg";
+import nicoEvent from "@/assets/nico-event.jpeg";
 import ScrollReveal from "./ScrollReveal";
+
+const carouselImages = [
+  { src: nicoDailyRecord, alt: "Nico Sanders receiving an award from The Daily Record" },
+  { src: nicoFamily, alt: "Nico Sanders with his family" },
+  { src: nicoCommunity, alt: "Nico Sanders with community supporters" },
+  { src: nicoEvent, alt: "Nico Sanders at a community event" },
+];
 
 const AboutSection = () => {
   const [signupDone, setSignupDone] = useState(false);
+  const [currentImg, setCurrentImg] = useState(0);
+
+  const nextImg = useCallback(() => {
+    setCurrentImg((i) => (i + 1) % carouselImages.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextImg, 4000);
+    return () => clearInterval(timer);
+  }, [nextImg]);
 
   const handleSignup = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -26,12 +46,28 @@ const AboutSection = () => {
             </h2>
 
             <div className="flex gap-6 mb-6">
-              <div className="hidden sm:block shrink-0">
-                <img
-                  src={nicoDailyRecord}
-                  alt="Nico Sanders receiving an award from The Daily Record"
-                  className="w-52 rounded-xl object-cover aspect-[3/4] border border-border"
-                />
+              <div className="hidden sm:block shrink-0 relative">
+                <div className="w-52 aspect-[3/4] rounded-xl overflow-hidden border border-border relative">
+                  {carouselImages.map((img, i) => (
+                    <img
+                      key={img.alt}
+                      src={img.src}
+                      alt={img.alt}
+                      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+                      style={{ opacity: i === currentImg ? 1 : 0 }}
+                    />
+                  ))}
+                </div>
+                <div className="flex justify-center gap-1.5 mt-3">
+                  {carouselImages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentImg(i)}
+                      className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentImg ? "bg-primary w-4" : "bg-muted-foreground/30"}`}
+                      aria-label={`View photo ${i + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
               <div className="space-y-4">
                 <p className="text-muted-foreground leading-relaxed">
