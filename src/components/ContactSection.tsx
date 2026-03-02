@@ -45,12 +45,12 @@ const ContactSection = () => {
                 </div>
                 <p className="text-muted-foreground text-xs mb-3 uppercase tracking-wider">Social</p>
                 <div className="flex flex-wrap gap-2">
-                  {["Facebook", "Instagram", "X", "YouTube"].map((s) => (
-                    <a key={s} href="https://example.com" rel="noopener"
-                      className="text-xs text-muted-foreground border border-border rounded-md px-3 py-2 hover:text-foreground hover:border-primary/20 transition-all">
+                  {["Facebook", "Instagram", "X", "YouTube"].map((s) =>
+                  <a key={s} rel="noopener"
+                  className="text-xs text-muted-foreground border border-border rounded-md px-3 py-2 hover:text-foreground hover:border-primary/20 transition-all" href="https://www.instagram.com/nicosandersformddelegate">
                       {s}
                     </a>
-                  ))}
+                  )}
                 </div>
               </div>
 
@@ -64,18 +64,18 @@ const ContactSection = () => {
                     <div>
                       <label htmlFor="cName" className="text-xs text-muted-foreground uppercase tracking-wider">Name</label>
                       <input id="cName" name="name" autoComplete="name" required
-                        className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                      className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
                     </div>
                     <div>
                       <label htmlFor="cEmail" className="text-xs text-muted-foreground uppercase tracking-wider">Email</label>
                       <input id="cEmail" name="email" type="email" autoComplete="email" required
-                        className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                      className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
                     </div>
                   </div>
                   <div>
                     <label htmlFor="cMsg" className="text-xs text-muted-foreground uppercase tracking-wider">Message</label>
                     <textarea id="cMsg" name="message" required rows={4}
-                      className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                    className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
                   </div>
                   <button type="submit" className="w-full py-3 rounded-lg text-sm font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity">
                     Send Message
@@ -91,8 +91,8 @@ const ContactSection = () => {
           </div>
         </ScrollReveal>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default ContactSection;
