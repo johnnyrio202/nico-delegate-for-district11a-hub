@@ -45,10 +45,15 @@ const ContactSection = () => {
                 </div>
                 <p className="text-muted-foreground text-xs mb-3 uppercase tracking-wider">Social</p>
                 <div className="flex flex-wrap gap-2">
-                  {["Facebook", "Instagram", "X", "YouTube"].map((s) =>
-                  <a key={s} rel="noopener"
-                  className="text-xs text-muted-foreground border border-border rounded-md px-3 py-2 hover:text-foreground hover:border-primary/20 transition-all" href="https://www.instagram.com/nicosandersformddelegate">
-                      {s}
+                  {[
+                    { label: "Facebook", href: "https://www.facebook.com/nicosandersformddelegate" },
+                    { label: "Instagram", href: "https://www.instagram.com/nicosandersformddelegate" },
+                    { label: "X", href: "https://x.com/nicosandersformddelegate" },
+                    { label: "YouTube", href: "https://www.youtube.com/@nicosandersformddelegate" },
+                  ].map((s) =>
+                    <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
+                      className="text-xs text-muted-foreground border border-border rounded-md px-3 py-2 hover:text-foreground hover:border-primary/20 transition-all">
+                      {s.label}
                     </a>
                   )}
                 </div>
