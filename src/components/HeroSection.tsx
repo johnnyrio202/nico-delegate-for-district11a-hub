@@ -1,9 +1,28 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 import nicoImg from "@/assets/nico-elections.jpeg";
+import nicoFamilyHoliday from "@/assets/nico-family-holiday.png";
 import ScrollReveal from "./ScrollReveal";
 
-const HeroSection = () =>
+const heroImages = [
+  { src: nicoImg, alt: "Nico Sanders at the Maryland State Board of Elections" },
+  { src: nicoFamilyHoliday, alt: "Nico Sanders with his family during the holidays" },
+];
+
+const HeroSection = () => {
+  const [currentHeroImg, setCurrentHeroImg] = useState(0);
+
+  const nextHeroImg = useCallback(() => {
+    setCurrentHeroImg((i) => (i + 1) % heroImages.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextHeroImg, 5000);
+    return () => clearInterval(timer);
+  }, [nextHeroImg]);
+
+  return (
 <section className="relative min-h-[90vh] flex items-center overflow-hidden" id="top">
     {/* Background effects */}
     <div className="absolute inset-0 hero-gradient" />
@@ -89,10 +108,15 @@ const HeroSection = () =>
         transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}>
         
           <div className="relative rounded-2xl overflow-hidden glow-amber">
-            <img
-            src={nicoImg}
-            alt="Nico Sanders at the Maryland State Board of Elections"
-            className="w-full aspect-[4/5] object-cover object-top" />
+            {heroImages.map((img, i) => (
+              <img
+                key={img.alt}
+                src={img.src}
+                alt={img.alt}
+                className={`w-full aspect-[4/5] object-cover object-top transition-opacity duration-1000 ${i === 0 ? "relative" : "absolute inset-0"}`}
+                style={{ opacity: i === currentHeroImg ? 1 : 0 }}
+              />
+            ))}
           
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -143,7 +167,8 @@ const HeroSection = () =>
     
       <ChevronDown size={24} />
     </motion.a>
-  </section>;
-
+  </section>
+  );
+};
 
 export default HeroSection;
