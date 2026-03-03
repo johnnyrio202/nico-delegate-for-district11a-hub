@@ -1,16 +1,36 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { Mail, Send } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import ScrollReveal from "./ScrollReveal";
 
 const ContactSection = () => {
   const [sent, setSent] = useState(false);
 
-  const handleContact = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleContact = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSent(true);
-    toast.success("Message sent! We'll get back to you.");
-    (e.target as HTMLFormElement).reset();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const message = formData.get("message") as string;
+
+    try {
+      const { error } = await supabase.from("contact_messages").insert({ name, email, message });
+      if (error) throw error;
+
+      // Send email to campaign
+      supabase.functions.invoke("send-contact-email", {
+        body: { name, email, message, type: "contact" },
+      });
+
+      setSent(true);
+      toast.success("Message sent! We'll get back to you.");
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (

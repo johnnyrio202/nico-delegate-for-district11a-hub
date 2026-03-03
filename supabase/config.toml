@@ -1,0 +1,4 @@
+project_id = "kheqibctakoejwobnmig"
+
+[functions.send-contact-email]
+verify_jwt = false

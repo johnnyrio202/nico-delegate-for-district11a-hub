@@ -1,16 +1,39 @@
 import { useState } from "react";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 import { ArrowRight, Users, Heart } from "lucide-react";
 import ScrollReveal from "./ScrollReveal";
 
 const VolunteerDonateSection = () => {
   const [volDone, setVolDone] = useState(false);
 
-  const handleVolunteer = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleVolunteer = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setVolDone(true);
-    toast.success("Thank you for volunteering!");
-    (e.target as HTMLFormElement).reset();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    const name = formData.get("name") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const help = formData.get("help") as string;
+
+    try {
+      const { error } = await supabase.from("volunteer_signups").insert({
+        name, email, phone: phone || null, help_details: help || null,
+      });
+      if (error) throw error;
+
+      // Trigger email notification
+      supabase.functions.invoke("send-contact-email", {
+        body: { name, email, message: `Phone: ${phone || "N/A"}\nHow they want to help: ${help || "N/A"}`, type: "volunteer" },
+      });
+
+      setVolDone(true);
+      toast.success("Thank you for volunteering!");
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong. Please try again.");
+    }
   };
 
   return (
