@@ -5,6 +5,7 @@ import nicoDailyRecord from "@/assets/nico-daily-record.jpeg";
 import nicoFamily from "@/assets/nico-family.jpeg";
 import nicoCommunity from "@/assets/nico-community.jpeg";
 import nicoEvent from "@/assets/nico-event.jpeg";
+import nicoRavens from "@/assets/nico-ravens.png";
 import ScrollReveal from "./ScrollReveal";
 
 const carouselImages = [
@@ -12,6 +13,7 @@ const carouselImages = [
   { src: nicoFamily, alt: "Nico Sanders with his family" },
   { src: nicoCommunity, alt: "Nico Sanders with community supporters" },
   { src: nicoEvent, alt: "Nico Sanders at a community event" },
+  { src: nicoRavens, alt: "Nico Sanders at a Ravens game" },
 ];
 
 const AboutSection = () => {
