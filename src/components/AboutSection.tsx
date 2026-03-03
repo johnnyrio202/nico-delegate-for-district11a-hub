@@ -66,7 +66,7 @@ const AboutSection = () => {
             </h2>
 
             <div className="flex gap-6 mb-6">
-              <div className="hidden sm:block shrink-0 relative">
+              <div className="shrink-0 relative">
                 <div className="w-52 aspect-[3/4] rounded-xl overflow-hidden border border-border relative">
                   {carouselImages.map((img, i) => (
                     <img
