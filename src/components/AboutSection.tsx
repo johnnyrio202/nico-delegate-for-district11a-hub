@@ -57,48 +57,49 @@ const AboutSection = () => {
     <section id="about" className="py-24 relative">
       <div className="section-divider mb-24" />
       <div className="container">
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.8fr] gap-12 lg:gap-16">
           <ScrollReveal>
             <span className="text-xs uppercase tracking-[0.3em] text-primary font-medium mb-4 block">About</span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold leading-tight mb-6">
+            <h2 className="font-display text-3xl sm:text-4xl font-bold leading-tight mb-8">
               Building coalitions that{" "}
               <span className="gradient-gold-text">deliver results</span>
             </h2>
 
-            <div className="flex flex-col sm:flex-row gap-6 mb-6">
-              <div className="shrink-0 relative mx-auto sm:mx-0">
-                <div className="w-64 sm:w-52 aspect-[3/4] rounded-xl overflow-hidden border border-border relative">
-                  {carouselImages.map((img, i) => (
-                    <img
-                      key={img.alt}
-                      src={img.src}
-                      alt={img.alt}
-                      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
-                      style={{ opacity: i === currentImg ? 1 : 0 }}
-                    />
-                  ))}
-                </div>
-                <div className="flex justify-center gap-1.5 mt-3">
-                  {carouselImages.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentImg(i)}
-                      className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentImg ? "bg-primary w-4" : "bg-muted-foreground/30"}`}
-                      aria-label={`View photo ${i + 1}`}
-                    />
-                  ))}
-                </div>
+            {/* Carousel */}
+            <div className="relative mx-auto lg:mx-0 mb-8 w-full max-w-md lg:max-w-full">
+              <div className="w-full aspect-[3/4] rounded-xl overflow-hidden border border-border relative">
+                {carouselImages.map((img, i) => (
+                  <img
+                    key={img.alt}
+                    src={img.src}
+                    alt={img.alt}
+                    className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+                    style={{ opacity: i === currentImg ? 1 : 0 }}
+                  />
+                ))}
               </div>
-              <div className="space-y-4">
-                <p className="text-muted-foreground leading-relaxed">
-                  I have worked at the intersection of housing, health, and community safety. I have helped organizations serve people with complex needs,
-                  and I have partnered with residents, service providers, and public agencies to deliver real outcomes.
-                </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  In Annapolis, I will focus on common-sense legislation that lowers costs, strengthens public safety through prevention and accountability,
-                  and improves access to care for mental health and substance use.
-                </p>
+              <div className="flex justify-center gap-1.5 mt-3">
+                {carouselImages.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentImg(i)}
+                    className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === currentImg ? "bg-primary w-4" : "bg-muted-foreground/30"}`}
+                    aria-label={`View photo ${i + 1}`}
+                  />
+                ))}
               </div>
+            </div>
+
+            {/* Text below carousel */}
+            <div className="space-y-4 mb-8">
+              <p className="text-muted-foreground leading-relaxed">
+                I have worked at the intersection of housing, health, and community safety. I have helped organizations serve people with complex needs,
+                and I have partnered with residents, service providers, and public agencies to deliver real outcomes.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                In Annapolis, I will focus on common-sense legislation that lowers costs, strengthens public safety through prevention and accountability,
+                and improves access to care for mental health and substance use.
+              </p>
             </div>
 
             <ul className="space-y-3 mt-8">
