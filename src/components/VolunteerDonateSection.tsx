@@ -18,13 +18,21 @@ const VolunteerDonateSection = () => {
 
     try {
       const { error } = await supabase.from("volunteer_signups").insert({
-        name, email, phone: phone || null, help_details: help || null
+        name,
+        email,
+        phone: phone || null,
+        help_details: help || null,
       });
       if (error) throw error;
 
       // Trigger email notification
       supabase.functions.invoke("send-contact-email", {
-        body: { name, email, message: `Phone: ${phone || "N/A"}\nHow they want to help: ${help || "N/A"}`, type: "volunteer" }
+        body: {
+          name,
+          email,
+          message: `Phone: ${phone || "N/A"}\nHow they want to help: ${help || "N/A"}`,
+          type: "volunteer",
+        },
       });
 
       setVolDone(true);
@@ -58,27 +66,58 @@ const VolunteerDonateSection = () => {
               <form onSubmit={handleVolunteer} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="vName" className="text-xs text-muted-foreground uppercase tracking-wider">Name</label>
-                    <input id="vName" name="name" autoComplete="name" required
-                    className="w-full mt-1.5 px-4 py-3 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                    <label htmlFor="vName" className="text-xs text-muted-foreground uppercase tracking-wider">
+                      Name
+                    </label>
+                    <input
+                      id="vName"
+                      name="name"
+                      autoComplete="name"
+                      required
+                      className="w-full mt-1.5 px-4 py-3 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all"
+                    />
                   </div>
                   <div>
-                    <label htmlFor="vPhone" className="text-xs text-muted-foreground uppercase tracking-wider">Phone</label>
-                    <input id="vPhone" name="phone" autoComplete="tel"
-                    className="w-full mt-1.5 px-4 py-3 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                    <label htmlFor="vPhone" className="text-xs text-muted-foreground uppercase tracking-wider">
+                      Phone
+                    </label>
+                    <input
+                      id="vPhone"
+                      name="phone"
+                      autoComplete="tel"
+                      className="w-full mt-1.5 px-4 py-3 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all"
+                    />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="vEmail" className="text-xs text-muted-foreground uppercase tracking-wider">Email</label>
-                  <input id="vEmail" name="email" type="email" autoComplete="email" required
-                  className="w-full mt-1.5 px-4 py-3 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                  <label htmlFor="vEmail" className="text-xs text-muted-foreground uppercase tracking-wider">
+                    Email
+                  </label>
+                  <input
+                    id="vEmail"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    className="w-full mt-1.5 px-4 py-3 rounded-lg border border-border bg-background/50 text-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all"
+                  />
                 </div>
                 <div>
-                  <label htmlFor="vHelp" className="text-xs text-muted-foreground uppercase tracking-wider">How do you want to help?</label>
-                  <textarea id="vHelp" name="help" placeholder="Canvassing, phones, hosting, data, social media…" rows={3}
-                  className="w-full mt-1.5 px-4 py-3 rounded-lg border border-border bg-background/50 text-foreground text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
+                  <label htmlFor="vHelp" className="text-xs text-muted-foreground uppercase tracking-wider">
+                    How do you want to help?
+                  </label>
+                  <textarea
+                    id="vHelp"
+                    name="help"
+                    placeholder="Canvassing, phones, hosting, data, social media…"
+                    rows={3}
+                    className="w-full mt-1.5 px-4 py-3 rounded-lg border border-border bg-background/50 text-foreground text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all"
+                  />
                 </div>
-                <button type="submit" className="w-full py-3 rounded-lg text-sm font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                <button
+                  type="submit"
+                  className="w-full py-3 rounded-lg text-sm font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+                >
                   Sign Up to Volunteer <ArrowRight size={15} />
                 </button>
                 {volDone && <p className="text-xs text-primary">✓ Thank you! We'll be in touch.</p>}
@@ -89,8 +128,8 @@ const VolunteerDonateSection = () => {
           <ScrollReveal delay={0.15}>
             <div className="bg-card rounded-xl p-8 h-full border border-border shadow-sm" id="donate">
               <div className="flex items-center gap-3 mb-6">
-                 <div className="w-10 h-10 rounded-lg gradient-blue flex items-center justify-center">
-                   <Heart size={18} className="text-secondary-foreground" />
+                <div className="w-10 h-10 rounded-lg gradient-blue flex items-center justify-center">
+                  <Heart size={18} className="text-secondary-foreground" />
                 </div>
                 <div>
                   <h2 className="font-display text-2xl font-bold">Donate</h2>
@@ -108,10 +147,18 @@ const VolunteerDonateSection = () => {
                     Every dollar helps us reach more voters across District 11A.
                   </p>
                   <div className="flex flex-wrap gap-3">
-                    <a rel="noopener" className="px-6 py-3 rounded-md text-sm font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity flex items-center gap-2" href="https://secure.actblue.com/donate/nico-sanders-1">
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-6 py-3 rounded-md text-sm font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity flex items-center gap-2"
+                      href="https://secure.actblue.com/donate/nico-sanders-1"
+                    >
                       Donate Online <ArrowRight size={14} />
                     </a>
-                    <a href="#contact" className="px-5 py-3 rounded-md text-sm font-medium border border-border hover:bg-secondary/50 transition-colors">
+                    <a
+                      href="#contact"
+                      className="px-5 py-3 rounded-md text-sm font-medium border border-border hover:bg-secondary/50 transition-colors"
+                    >
                       Ask a Question
                     </a>
                   </div>
@@ -125,7 +172,10 @@ const VolunteerDonateSection = () => {
                   <p className="text-muted-foreground text-sm leading-relaxed mb-3">
                     Want to host a small gathering in District 11A? We'll coordinate everything.
                   </p>
-                  <a href="#contact" className="text-sm text-primary font-medium hover:underline inline-flex items-center gap-1.5">
+                  <a
+                    href="#contact"
+                    className="text-sm text-primary font-medium hover:underline inline-flex items-center gap-1.5"
+                  >
                     Contact the campaign <ArrowRight size={13} />
                   </a>
                 </div>
@@ -134,8 +184,8 @@ const VolunteerDonateSection = () => {
           </ScrollReveal>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default VolunteerDonateSection;
