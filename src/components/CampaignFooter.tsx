@@ -19,10 +19,10 @@ const CampaignFooter = () =>
           <div className="flex flex-wrap gap-2">
             {[{ label: "Email Signup", href: "#updates" },
           { label: "Volunteer", href: "#volunteer" },
-          { label: "Donate", href: "https://secure.actblue.com/donate/nico-sanders-1" }].
+          { label: "Donate", href: "https://secure.actblue.com/donate/nico-sanders-1", highlight: true }].
           map((l) =>
           <a key={l.href} href={l.href}
-          className="text-xs text-muted-foreground border border-border rounded-md px-3 py-2 hover:text-foreground hover:border-primary/20 transition-all">
+          className={`text-xs font-bold rounded-md px-4 py-2.5 transition-all flex items-center gap-2 ${l.highlight ? 'gradient-gold text-primary-foreground hover:opacity-90' : 'text-muted-foreground border border-border hover:text-foreground hover:border-primary/20'}`}>
                 {l.label}
               </a>
           )}

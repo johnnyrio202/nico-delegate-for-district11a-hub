@@ -37,10 +37,13 @@ const CampaignHeader = () => {
             </a>
           )}
           <div className="w-px h-5 bg-border mx-2" />
-          <a className="px-4 py-2 text-sm font-medium text-secondary hover:text-foreground transition-colors" href="https://secure.actblue.com/donate/nico-sanders-1">
+          <a 
+            className="px-4 py-2 text-sm font-bold gradient-gold text-primary-foreground rounded-md hover:opacity-90 transition-opacity flex items-center gap-2"
+            href="https://secure.actblue.com/donate/nico-sanders-1"
+          >
             Donate
           </a>
-          <a href="#volunteer" className="ml-1 px-5 py-2.5 rounded-md text-sm font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity flex items-center gap-2">
+          <a href="#volunteer" className="ml-1 px-5 py-2.5 rounded-md text-sm font-semibold border border-primary/30 text-primary hover:bg-primary/10 transition-colors flex items-center gap-2">
             Join the Team <ArrowRight size={14} />
           </a>
         </nav>
@@ -76,10 +79,14 @@ const CampaignHeader = () => {
                 </a>
             )}
               <div className="flex gap-3 mt-3 pt-3 border-t border-border">
-                <a onClick={() => setOpen(false)} className="flex-1 text-center py-3 rounded-md text-sm font-medium border border-primary/30 text-primary" href="https://secure.actblue.com/donate/nico-sanders-1">
+                <a 
+                  onClick={() => setOpen(false)} 
+                  className="flex-1 text-center py-3 rounded-md text-sm font-bold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity"
+                  href="https://secure.actblue.com/donate/nico-sanders-1"
+                >
                   Donate
                 </a>
-                <a href="#volunteer" onClick={() => setOpen(false)} className="flex-1 text-center py-3 rounded-md text-sm font-semibold gradient-gold text-primary-foreground">
+                <a href="#volunteer" onClick={() => setOpen(false)} className="flex-1 text-center py-3 rounded-md text-sm font-semibold border border-primary/30 text-primary">
                   Join the Team
                 </a>
               </div>
