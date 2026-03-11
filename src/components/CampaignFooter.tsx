@@ -19,7 +19,7 @@ const CampaignFooter = () =>
           <div className="flex flex-wrap gap-2">
             {[{ label: "Email Signup", href: "#updates" },
           { label: "Volunteer", href: "#volunteer" },
-          { label: "Donate", href: "#donate" }].
+          { label: "Donate", href: "https://secure.actblue.com/donate/nico-sanders-1" }].
           map((l) =>
           <a key={l.href} href={l.href}
           className="text-xs text-muted-foreground border border-border rounded-md px-3 py-2 hover:text-foreground hover:border-primary/20 transition-all">
