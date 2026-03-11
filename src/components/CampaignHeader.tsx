@@ -76,7 +76,7 @@ const CampaignHeader = () => {
                 </a>
             )}
               <div className="flex gap-3 mt-3 pt-3 border-t border-border">
-                <a href="#donate" onClick={() => setOpen(false)} className="flex-1 text-center py-3 rounded-md text-sm font-medium border border-primary/30 text-primary">
+                <a onClick={() => setOpen(false)} className="flex-1 text-center py-3 rounded-md text-sm font-medium border border-primary/30 text-primary" href="https://secure.actblue.com/donate/nico-sanders-1">
                   Donate
                 </a>
                 <a href="#volunteer" onClick={() => setOpen(false)} className="flex-1 text-center py-3 rounded-md text-sm font-semibold gradient-gold text-primary-foreground">
