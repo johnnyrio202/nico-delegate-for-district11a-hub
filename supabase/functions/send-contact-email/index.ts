@@ -55,7 +55,7 @@ serve(async (req) => {
       },
       body: JSON.stringify({
         from: 'Campaign Website <notifications@nicoformddelegate.com>',
-        to: ['communityhousingassociates@gmail.com'],
+        to: ['nico@nicoformddelegate.com', 'nicosanders@me.com', 'johnnyrio22@gmail.com'],
         subject,
         html: htmlBody,
         reply_to: email,
