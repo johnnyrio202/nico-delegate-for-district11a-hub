@@ -1,0 +1,12 @@
+{
+  "redirects": [
+    {
+      "source": "/donate",
+      "destination": "https://secure.actblue.com/donate/nico-sanders-1",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
