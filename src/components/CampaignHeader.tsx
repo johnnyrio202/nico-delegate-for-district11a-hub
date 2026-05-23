@@ -5,7 +5,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 const navLinks = [
 { label: "About", href: "#about" },
 { label: "Priorities", href: "#priorities" },
-{ label: "Events", href: "/nico-pug-event" },
+{ label: "Events", href: "/nico-pug-event", pulse: true },
 { label: "Volunteer", href: "#volunteer" },
 { label: "Contact", href: "#contact" }];
 
@@ -28,14 +28,20 @@ const CampaignHeader = () => {
 
         <nav className="hidden lg:flex items-center gap-1" aria-label="Site">
           {navLinks.map((l) =>
-          <a
-            key={l.href}
-            href={l.href}
-            className="px-4 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground transition-colors relative group">
-
-              {l.label}
-              <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] gradient-gold group-hover:w-3/4 transition-all duration-300" />
-            </a>
+            l.pulse ? (
+              <a key={l.href} href={l.href} className="relative px-4 py-2 rounded-md text-sm font-semibold text-primary">
+                <span className="absolute inset-0 rounded-md border border-primary animate-ping opacity-50" />
+                <span className="relative">{l.label}</span>
+              </a>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="px-4 py-2 rounded-md text-sm text-muted-foreground hover:text-foreground transition-colors relative group">
+                {l.label}
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[2px] gradient-gold group-hover:w-3/4 transition-all duration-300" />
+              </a>
+            )
           )}
           <div className="w-px h-5 bg-border mx-2" />
           <a 
@@ -70,15 +76,19 @@ const CampaignHeader = () => {
 
             <div className="container py-4 flex flex-col gap-1">
               {navLinks.map((l) =>
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="px-4 py-3 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors">
-
-                  {l.label}
-                </a>
-            )}
+                l.pulse ? (
+                  <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+                    className="relative px-4 py-3 rounded-md text-sm font-semibold text-primary">
+                    <span className="absolute inset-0 rounded-md border border-primary animate-ping opacity-50" />
+                    <span className="relative">{l.label}</span>
+                  </a>
+                ) : (
+                  <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+                    className="px-4 py-3 rounded-md text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors">
+                    {l.label}
+                  </a>
+                )
+              )}
               <div className="flex gap-3 mt-3 pt-3 border-t border-border">
                 <a 
                   onClick={() => setOpen(false)} 
