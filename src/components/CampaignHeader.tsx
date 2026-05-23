@@ -5,6 +5,7 @@ import { Menu, X, ArrowRight } from "lucide-react";
 const navLinks = [
 { label: "About", href: "#about" },
 { label: "Priorities", href: "#priorities" },
+{ label: "Events", href: "/nico-pug-event" },
 { label: "Volunteer", href: "#volunteer" },
 { label: "Contact", href: "#contact" }];
 
