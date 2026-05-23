@@ -7,9 +7,9 @@ import nicoPugEventFlyer from "@/assets/nico-pug-event-flyer.jpg";
 import ScrollReveal from "./ScrollReveal";
 
 const heroImages = [
-  { src: nicoImg, alt: "Nico Sanders at the Maryland State Board of Elections" },
-  { src: nicoFamilyHoliday, alt: "Nico Sanders with his family during the holidays" },
-  { src: nicoPugEventFlyer, alt: "Raising the Bar for District 11A — fundraiser at The Pug, June 2" },
+  { src: nicoImg, alt: "Nico Sanders at the Maryland State Board of Elections", href: null },
+  { src: nicoFamilyHoliday, alt: "Nico Sanders with his family during the holidays", href: null },
+  { src: nicoPugEventFlyer, alt: "Raising the Bar for District 11A — fundraiser at The Pug, June 2", href: "/nico-pug-event" },
 ];
 
 const HeroSection = () => {
@@ -110,15 +110,20 @@ const HeroSection = () => {
         transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}>
         
           <div className="relative rounded-2xl overflow-hidden glow-amber">
-            {heroImages.map((img, i) => (
-              <img
-                key={img.alt}
-                src={img.src}
-                alt={img.alt}
-                className={`w-full aspect-[4/5] object-cover object-top transition-opacity duration-1000 ${i === 0 ? "relative" : "absolute inset-0"}`}
-                style={{ opacity: i === currentHeroImg ? 1 : 0 }}
-              />
-            ))}
+            {heroImages.map((img, i) => {
+              const imgEl = (
+                <img
+                  key={img.alt}
+                  src={img.src}
+                  alt={img.alt}
+                  className={`w-full aspect-[4/5] object-cover object-top transition-opacity duration-1000 ${i === 0 ? "relative" : "absolute inset-0"} ${img.href ? "cursor-pointer" : ""}`}
+                  style={{ opacity: i === currentHeroImg ? 1 : 0 }}
+                />
+              );
+              return img.href ? (
+                <a key={img.alt} href={img.href} aria-label={img.alt}>{imgEl}</a>
+              ) : imgEl;
+            })}
           
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6">
