@@ -3,11 +3,13 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { useState, useEffect, useCallback } from "react";
 import nicoImg from "@/assets/nico-elections.jpeg";
 import nicoFamilyHoliday from "@/assets/nico-family-holiday.png";
+import nicoPugEventFlyer from "@/assets/nico-pug-event-flyer.jpg";
 import ScrollReveal from "./ScrollReveal";
 
 const heroImages = [
   { src: nicoImg, alt: "Nico Sanders at the Maryland State Board of Elections" },
   { src: nicoFamilyHoliday, alt: "Nico Sanders with his family during the holidays" },
+  { src: nicoPugEventFlyer, alt: "Raising the Bar for District 11A — fundraiser at The Pug, June 2" },
 ];
 
 const HeroSection = () => {
