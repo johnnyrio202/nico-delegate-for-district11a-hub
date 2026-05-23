@@ -11,8 +11,8 @@ const Index = () => (
   <>
     <CampaignHeader />
     <main>
-      <HeroSection />
       <ShareBar />
+      <HeroSection />
       <AboutSection />
       <PrioritiesSection />
       <VolunteerDonateSection />
