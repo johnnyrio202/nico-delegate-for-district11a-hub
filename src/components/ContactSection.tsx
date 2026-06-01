@@ -49,6 +49,9 @@ const ContactSection = () => {
       console.error("Contact form error:", msg);
       setFormError(`Something went wrong — please try again or email us directly at ${CAMPAIGN_EMAIL}`);
       toast.error("Message failed to send.");
+      supabase.functions.invoke("send-admin-alert", {
+        body: { error: msg, context: "contact form submission", userName: name, userEmail: email },
+      }).catch(() => {});
     } finally {
       setSubmitting(false);
     }
