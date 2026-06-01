@@ -77,18 +77,25 @@ const ContactSection = () => {
                   <h3 className="font-display text-lg font-semibold">Reach Out</h3>
                 </div>
                 <div className="flex flex-col gap-2 mb-6">
-                  <div className="flex items-center gap-1">
-                    <a href={`mailto:${CAMPAIGN_EMAIL}`} className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
-                      {CAMPAIGN_EMAIL}
-                    </a>
-                    <button
-                      type="button"
-                      onClick={copyEmail}
-                      title="Copy email address"
-                      className="p-2 rounded-lg border border-secondary/20 text-secondary hover:bg-secondary/5 transition-colors"
-                    >
-                      {copied ? <Check size={14} /> : <Copy size={14} />}
-                    </button>
+                  <div className="flex flex-col gap-1.5">
+                    <span className="px-4 py-2 text-sm text-secondary font-medium">{CAMPAIGN_EMAIL}</span>
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={copyEmail}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-secondary/20 text-xs text-secondary hover:bg-secondary/5 transition-colors"
+                      >
+                        {copied ? <Check size={12} /> : <Copy size={12} />}
+                        {copied ? "Copied!" : "Copy address"}
+                      </button>
+                      <a
+                        href={`mailto:${CAMPAIGN_EMAIL}`}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-secondary/20 text-xs text-secondary hover:bg-secondary/5 transition-colors"
+                      >
+                        <Mail size={12} />
+                        Open mail app
+                      </a>
+                    </div>
                   </div>
                   <a href="tel:+14108035821" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
                     (410) 803-5821
