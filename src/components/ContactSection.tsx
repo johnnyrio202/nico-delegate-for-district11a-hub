@@ -1,14 +1,28 @@
 import { useState } from "react";
 import { toast } from "sonner";
-import { Mail, Send } from "lucide-react";
+import { Mail, Send, Copy, Check } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import ScrollReveal from "./ScrollReveal";
 
+const CAMPAIGN_EMAIL = "info@nicoformddelegate.com";
+
 const ContactSection = () => {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
+
+  const copyEmail = async () => {
+    await navigator.clipboard.writeText(CAMPAIGN_EMAIL);
+    setCopied(true);
+    toast.success("Email address copied!");
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const handleContact = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitting(true);
+    setFormError(null);
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
     const name = formData.get("name") as string;
@@ -17,19 +31,26 @@ const ContactSection = () => {
 
     try {
       const { error } = await supabase.from("contact_messages").insert({ name, email, message });
-      if (error) throw error;
+      if (error) {
+        console.error("DB insert error:", error);
+        throw new Error(error.message);
+      }
 
-      // Send email to campaign
-      supabase.functions.invoke("send-contact-email", {
+      const { error: fnError } = await supabase.functions.invoke("send-contact-email", {
         body: { name, email, message, type: "contact" },
       });
+      if (fnError) console.warn("Email notification failed:", fnError);
 
       setSent(true);
       toast.success("Message sent! We'll get back to you.");
       form.reset();
-    } catch (err) {
-      console.error(err);
-      toast.error("Something went wrong. Please try again.");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Unknown error";
+      console.error("Contact form error:", msg);
+      setFormError(`Something went wrong — please try again or email us directly at ${CAMPAIGN_EMAIL}`);
+      toast.error("Message failed to send.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -56,9 +77,19 @@ const ContactSection = () => {
                   <h3 className="font-display text-lg font-semibold">Reach Out</h3>
                 </div>
                 <div className="flex flex-col gap-2 mb-6">
-                  <a href="mailto:info@nicoformddelegate.com" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
-                    info@nicoformddelegate.com
-                  </a>
+                  <div className="flex items-center gap-1">
+                    <a href={`mailto:${CAMPAIGN_EMAIL}`} className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
+                      {CAMPAIGN_EMAIL}
+                    </a>
+                    <button
+                      type="button"
+                      onClick={copyEmail}
+                      title="Copy email address"
+                      className="p-2 rounded-lg border border-secondary/20 text-secondary hover:bg-secondary/5 transition-colors"
+                    >
+                      {copied ? <Check size={14} /> : <Copy size={14} />}
+                    </button>
+                  </div>
                   <a href="tel:+14108035821" className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-secondary/20 text-sm text-secondary hover:bg-secondary/5 transition-colors">
                     (410) 803-5821
                   </a>
@@ -102,8 +133,13 @@ const ContactSection = () => {
                     <textarea id="cMsg" name="message" required rows={4}
                     className="w-full mt-1.5 px-4 py-2.5 rounded-lg border border-border bg-background/50 text-foreground text-sm resize-y focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/30 transition-all" />
                   </div>
-                  <button type="submit" className="w-full py-3 rounded-lg text-sm font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity">
-                    Send Message
+                  {formError && (
+                    <div className="rounded-lg border border-destructive/40 bg-destructive/10 px-4 py-3 text-xs text-destructive leading-relaxed">
+                      {formError}
+                    </div>
+                  )}
+                  <button type="submit" disabled={submitting} className="w-full py-3 rounded-lg text-sm font-semibold gradient-gold text-primary-foreground hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed">
+                    {submitting ? "Sending…" : "Send Message"}
                   </button>
                   {sent && <p className="text-xs text-primary">✓ Thank you! We'll respond soon.</p>}
                 </form>
